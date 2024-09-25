@@ -31,7 +31,7 @@ public class TopKMapper extends Mapper<Text, Text, Text, ErrorCount> {
     public void map(Text key, Text value, Context context)
             throws IOException, InterruptedException {
         ErrorCount errorCount = ErrorCount.parseString(value.toString());
-        pq.add(new WordAndCount(key, new ErrorCount(new IntWritable(errorCount.error.get()),new IntWritable(errorCount.count.get()))));
+        pq.add(new WordAndCount(new Text(key), new ErrorCount(new IntWritable(errorCount.error.get()),new IntWritable(errorCount.count.get()))));
 
         if (pq.size() > 5) {
             pq.poll();

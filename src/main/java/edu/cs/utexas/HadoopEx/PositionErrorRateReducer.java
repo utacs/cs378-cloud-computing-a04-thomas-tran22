@@ -16,6 +16,6 @@ public class PositionErrorRateReducer extends Reducer<Text, ErrorCount, Text, Er
             totalError += errorCount.error.get();
             totalCount += errorCount.count.get();
        }
-        context.write(key, new ErrorCount(new IntWritable(totalError), new IntWritable(totalCount)));
+        context.write(new Text(key), new ErrorCount(new IntWritable(totalError), new IntWritable(totalCount)));
     }
 }
