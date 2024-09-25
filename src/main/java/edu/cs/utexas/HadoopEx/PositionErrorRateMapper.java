@@ -20,20 +20,28 @@ public class PositionErrorRateMapper extends Mapper<Object, Text, Text, ErrorCou
         String medallion = itr[0]; 
         int errorCount = 0;
 
-        double pickup_longitude = Math.round(Float.parseFloat(itr[6]) * 100.0) / 100.0; 
-        double pickup_latitude = Math.round(Float.parseFloat(itr[7]) * 100.0) / 100.0;
-        double dropoff_longitude = Math.round(Float.parseFloat(itr[8]) * 100.0) / 100.0;
-        double dropoff_latitude = Math.round(Float.parseFloat(itr[9]) * 100.0) / 100.0;
+        if(!itr[6].equals("") && !itr[7].equals("") && !itr[8].equals("")  && !itr[9].equals("") ){
+            double pickup_longitude = Math.round(Float.parseFloat(itr[6]) * 100.0) / 100.0; 
+            double pickup_latitude = Math.round(Float.parseFloat(itr[7]) * 100.0) / 100.0;
+            double dropoff_longitude = Math.round(Float.parseFloat(itr[8]) * 100.0) / 100.0;
+            double dropoff_latitude = Math.round(Float.parseFloat(itr[9]) * 100.0) / 100.0;
+    
+            if (pickup_longitude == 0 || pickup_latitude == 0) {
+                 errorCount += 1;
+            }
+    
+            if (dropoff_longitude == 0 ||dropoff_latitude == 0) {
+                errorCount += 1;
+            }
 
-        if (pickup_longitude == 0 || pickup_latitude == 0) {
-             errorCount += 1;
-        }
-
-        if (dropoff_longitude == 0 ||dropoff_latitude == 0) {
+        }else{
             errorCount += 1;
         }
-        taxiId.set(medallion);
-
-        context.write(taxiId, new ErrorCount(new IntWritable(errorCount), new IntWritable(2))); 
+            taxiId.set(medallion);
+    
+            context.write(taxiId, new ErrorCount(new IntWritable(errorCount), new IntWritable(2))); 
+        
+        
+       
     }
 }
