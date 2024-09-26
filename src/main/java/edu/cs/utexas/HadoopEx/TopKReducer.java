@@ -14,7 +14,7 @@ import java.util.PriorityQueue;
 
 
 
-public class TopKReducer extends  Reducer<Text, ErrorCount, Text, ErrorCount> {
+public class TopKReducer extends  Reducer<Text, ErrorCount, Text, FloatWritable> {
 
     private PriorityQueue<WordAndCount> pq = new PriorityQueue<WordAndCount>(10);;
     private Logger logger = Logger.getLogger(TopKReducer.class);
@@ -71,7 +71,7 @@ public class TopKReducer extends  Reducer<Text, ErrorCount, Text, ErrorCount> {
         Collections.reverse(values);
 
         for (WordAndCount value : values) {
-            context.write(value.getWord(), value.getErrorCount());
+            context.write(value.getWord(), value.getRatioW());
             logger.info("TopKReducer - Top5 taxi GPS Error Rates are:  " + value.getWord() + "  Ratio:"+ value.getRatio());
         }
     }
