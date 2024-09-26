@@ -42,7 +42,7 @@ public class TopKReducer extends  Reducer<Text, EarningsPerMinuteCount, Text, Fl
            logger.info("Reducer Text: counter is " + counter);
            logger.info("Reducer Text: Add this item  " + new WordAndCount(key, value).toString());
 
-           pq.add(new WordAndCount( key, new EarningsPerMinuteCount(new FloatWritable(value.earnings.get()), new  IntWritable(value.count.get())) ) );
+           pq.add(new WordAndCount( new Text(key), new EarningsPerMinuteCount(new FloatWritable(value.earnings.get()), new  IntWritable(value.count.get())) ) );
 
            logger.info("Reducer Text: " + key.toString() + " , Count: " + value.toString());
            logger.info("PQ Status: " + pq.toString());

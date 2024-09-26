@@ -10,7 +10,6 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 public class EarningsMapper extends Mapper<Object, Text, Text, EarningsPerMinuteCount> {
     
-    private final Text driverId = new Text();
 
     private static final Pattern FLOAT_PATTERN = Pattern.compile("^[-+]?\\d*\\.\\d+([eE][-+]?\\d+)?$");
 
@@ -35,9 +34,8 @@ public class EarningsMapper extends Mapper<Object, Text, Text, EarningsPerMinute
 
             // check to see trip duration is positive
             if (tripTime > 0) {
-                driverId.set(driverID);
 
-                context.write(driverId, new EarningsPerMinuteCount( new FloatWritable(totalAmount), new IntWritable(tripTime)));
+                context.write(new Text(driverID), new EarningsPerMinuteCount( new FloatWritable(totalAmount), new IntWritable(tripTime)));
             }
         } catch (NumberFormatException e) {
         }

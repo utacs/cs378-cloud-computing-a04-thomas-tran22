@@ -37,13 +37,13 @@ public class WordAndCount implements Comparable<WordAndCount> {
         }
         
         public FloatWritable getRatioW() {
-            float ratio = earningsCount.earnings.get()/(float)earningsCount.count.get();
+            float ratio = (earningsCount.earnings.get()/(float)earningsCount.count.get()) * 60;
             FloatWritable ratioW = new FloatWritable(ratio);
             return ratioW;
         }
 
         public float getRatio() {
-            float ratio = earningsCount.earnings.get()/(float)earningsCount.count.get();
+            float ratio = (earningsCount.earnings.get()/(float)earningsCount.count.get()) * 60;
             FloatWritable ratioW = new FloatWritable(ratio);
             return ratio;
         }

@@ -19,6 +19,6 @@ public class EarningsReducer extends  Reducer<Text, EarningsPerMinuteCount, Text
             totalTime += earningsCount.count.get();
             totalAmount += earningsCount.earnings.get();
        }
-       context.write(text, new EarningsPerMinuteCount(new FloatWritable(totalAmount), new IntWritable(totalTime)));
+       context.write(new Text(text), new EarningsPerMinuteCount(new FloatWritable(totalAmount), new IntWritable(totalTime)));
    }
 }
