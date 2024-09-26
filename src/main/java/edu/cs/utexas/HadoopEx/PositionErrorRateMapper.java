@@ -33,7 +33,7 @@ public class PositionErrorRateMapper extends Mapper<Object, Text, Text, ErrorCou
             errorCount += 1;
         }
     
-            context.write(new Text(medallion), new ErrorCount(new IntWritable(errorCount), new IntWritable(2))); 
+            context.write(new Text(medallion), new ErrorCount(new IntWritable(errorCount), new IntWritable(1))); 
         
         
        
