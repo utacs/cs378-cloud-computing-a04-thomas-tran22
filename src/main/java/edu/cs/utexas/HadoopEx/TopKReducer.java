@@ -14,7 +14,7 @@ import java.util.PriorityQueue;
 
 
 
-public class TopKReducer extends  Reducer<Text, IntWritable, Text, FloatWritable> {
+public class TopKReducer extends  Reducer<Text, EarningsPerMinuteCount, Text, FloatWritable> {
 
     private PriorityQueue<WordAndCount> pq = new PriorityQueue<WordAndCount>(10);;
     private Logger logger = Logger.getLogger(TopKReducer.class);
