@@ -20,25 +20,6 @@
 
 ##  Unique Number: 51515
 
-Google Cloud DataProc:
-    
-![alt text](<Screenshot 2024-09-25 at 1.11.58 AM.png>)
-
-![alt text](<Screenshot 2024-09-25 at 1.12.09 AM.png>)
-
-Hadoop Yarn History
-
-![alt text](<topKtask2.png>)
-
-![alt text](<topKtask3.png>)
-
-![alt text](<wordCountTask1.png>)
-
-![alt text](<wordCountTask2.png>)
-
-![alt text](<wordCountTask3.png>)
-
-
 # Add your Project REPORT HERE 
 
 Task 1
